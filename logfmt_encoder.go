@@ -170,7 +170,6 @@ func (enc *logfmtEncoder) AddUintptr(key string, val uintptr) {
 
 // AddMarshaler adds a LogMarshaler to the encoder's fields. Since there's no real nesting in logfmt, we'll just trust the LogMarshaler to "do the right thing".
 func (enc *logfmtEncoder) AddMarshaler(key string, obj LogMarshaler) error {
-	enc.spacing()
 	return obj.MarshalLog(enc)
 }
 

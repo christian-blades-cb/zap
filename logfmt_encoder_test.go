@@ -42,8 +42,8 @@ func TestLogfmtEncoderFields(t *testing.T) {
 		expected string
 		f        func(Encoder)
 	}{
-		{"string", `k=v`, func(e Encoder) { e.AddString("k", "v") }},
-		{"string", `k="v"`, func(e Encoder) { e.AddString("k", "") }},
+		{"string", `k="v"`, func(e Encoder) { e.AddString("k", "v") }},
+		{"string", `k=""`, func(e Encoder) { e.AddString("k", "") }},
 		{"bool", "k", func(e Encoder) { e.AddBool("k", true) }},
 		{"bool", "k=false", func(e Encoder) { e.AddBool("k", false) }},
 		{"int", "k=42", func(e Encoder) { e.AddInt("k", 42) }},
