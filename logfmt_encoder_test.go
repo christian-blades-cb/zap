@@ -36,7 +36,7 @@ func assertLogfmtOutput(t *testing.T, desc, expected string, f func(Encoder)) {
 	})
 }
 
-func TestTextEncoderFields(t *testing.T) {
+func TestLogfmtEncoderFields(t *testing.T) {
 	tests := []struct {
 		desc     string
 		expected string

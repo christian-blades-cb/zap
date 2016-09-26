@@ -161,6 +161,13 @@ func (enc *logfmtEncoder) AddUint64(key string, value uint64) {
 	enc.bytes = strconv.AppendUint(enc.bytes, value, 10)
 }
 
+func (enc *logfmtEncoder) AddUintptr(key string, val uintptr) {
+	enc.spacing()
+	enc.addKey(key)
+	enc.bytes = append(enc.bytes, `=0x`...)
+	enc.bytes = strconv.AppendUint(enc.bytes, uint64(val), 16)
+}
+
 // AddMarshaler adds a LogMarshaler to the encoder's fields. Since there's no real nesting in logfmt, we'll just trust the LogMarshaler to "do the right thing".
 func (enc *logfmtEncoder) AddMarshaler(key string, obj LogMarshaler) error {
 	enc.spacing()
